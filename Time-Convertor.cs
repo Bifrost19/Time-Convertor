@@ -70,14 +70,12 @@ namespace Time_Convertor
             {
                 Console.WriteLine("   time =  " + week + " w : " + day + " d :  0" + hour + " h :  0" + min + " m :  0" + sec + " s" );
             }
-            Console.WriteLine("Press ENTER to continue ! ");
-            if(Console.ReadKey().Key == ConsoleKey.Enter)
-            {
-
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("   Press any key to continue ! ");
+            Console.ReadKey();
             Console.Clear();
             goto A;
-
-            }
 
 
         }
