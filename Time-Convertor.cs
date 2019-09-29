@@ -12,10 +12,10 @@ namespace Time-Converter
         static void Main()
         {
             A:
-              int hour , min , sec , time ;
+              ulong hour , min , sec , time ;
             Console.ForegroundColor = ConsoleColor.Cyan;
               Console.WriteLine("Insert the amount of time (in seconds) you want !");
-              time = int.Parse(Console.ReadLine());
+              time = ulong.Parse(Console.ReadLine());
               hour = time / 3600;
               min = (time % 3600) / 60;
              sec = (time % 3600) % 60;
