@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace first_project
+namespace Time_Convertor
 {
      class Program
     {
-       public static long  year , month , week , day , hour , min , sec , time = 0 ;
+       public static long  year , month , week , day , hour , min , sec , time = 0;
          static void Options()
             {
               if(sec > 10 && min > 10 && hour > 10)
@@ -50,7 +50,7 @@ namespace first_project
         {
             A:
               Console.ForegroundColor = ConsoleColor.Cyan;
-              Console.WriteLine("Insert the amount of time (in seconds) you want !");
+              Console.WriteLine("Insert the amount of time (in seconds) you want!");
               try
               {
                 time = long.Parse(Console.ReadLine());
@@ -78,7 +78,7 @@ namespace first_project
               Options();
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("   Press any key to continue ! ");
+            Console.WriteLine("   Press any key to continue! ");
             Console.ReadKey();
             Console.Clear();
             goto A;
