@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Time_Convertor
+namespace Time_Converter
 {
     class Program
     {
