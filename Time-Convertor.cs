@@ -9,75 +9,83 @@ namespace Time_Convertor
 {
     class Program
     {
+        public static long year, month, week, day, hour, min, sec, time = 0;
+
+        static void AddZeros()
+        {
+            for (int i = 0; i <= 7; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        if (year < 10) Console.Write("time = 0" + year + " y : ");
+                        else Console.Write("time =  " + year + " y : ");
+                        break;
+                    case 1:
+                        if (month < 10) Console.Write("0" + month + " m : ");
+                        else Console.Write(month + " m : ");
+                        break;
+                    case 2:
+                        if (week < 10) Console.Write("0" + week + " w : ");
+                        else Console.Write(week + " w : ");
+                        break;
+                    case 3:
+                        if (day < 10) Console.Write("0" + day + " d : ");
+                        else Console.Write(day + " d : ");
+                        break;
+                    case 4:
+                        if (hour < 10) Console.Write("0" + hour + " h : ");
+                        else Console.Write(hour + " h : ");
+                        break;
+                    case 5:
+                        if (min < 10) Console.Write("0" + min + " min : ");
+                        else Console.Write(min + " min : ");
+                        break;
+                    case 6:
+                        if (sec < 10) Console.Write("0" + sec + " s  ");
+                        else Console.Write(sec + " s  ");
+                        break;
+                }
+            }
+
+        }
         static void Main()
         {
-            A:
-              long week , day , hour , min , sec , time = 0 ;
-              Console.ForegroundColor = ConsoleColor.Cyan;
-              Console.WriteLine("Insert the amount of time (in seconds) you want !");
-              try
-              {
+        A:
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Insert the amount of time (in seconds) you want!");
+            try
+            {
                 time = long.Parse(Console.ReadLine());
-              }
-            catch(Exception)
-              {
+            }
+            catch (Exception)
+            {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter only numbers!");
                 Thread.Sleep(3000);
                 Console.Clear();
                 goto A;
-              }
-              if(time < 0)
-              {
+            }
+            if (time < 0)
+            {
                 time = -time;
-              }
-
-              week = time / 604800;
-              day = (time % 604800) / 86400 ; 
-              hour = ((time % 604800) % 86400) / 3600;
-              min = (((time % 604800) % 86400) % 3600) / 60;
-             sec = (((time % 604800) % 86400) % 3600) % 60;
-             Console.ForegroundColor = ConsoleColor.Green;
-            if(sec > 10 && min > 10 && hour > 10)
-            {
-                Console.WriteLine("   time =   " + week + " w : " + day + " d : " + hour + " h : " + min + " m : " + sec + " s" );
             }
-            if( sec < 10 && min > 10 && hour > 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : " + day + " d : " + hour + " h : " + min + " m : 0" + sec + " s" );
-            }
-            if( min < 10 && sec > 10 && hour > 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : " + day + " d : " + hour + " h :  0" + min + " m : " + sec + " s" );
-            }
-            if( sec < 10 && min < 10 && hour > 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : " + day + " d : " + hour + " h :  0" + min + " m :  0" + sec + " s" );
-            }
-            if( hour < 10 && min > 10 && sec > 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : "  + day + " d :  0"+ hour + " h : " + min + " m : " + sec + " s" );
-            }
-            if( hour < 10 && sec < 10 && min > 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : " + day + " d :  0" + hour + " h : " + min + " m :  0" + sec + " s" );
-            }
-            if( hour < 10 && min < 10 && sec > 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : " + day + " d :  0" + hour + " h :  0" + min + " m : " + sec + " s" );
-            }
-            if( hour < 10 && min < 10 && sec < 10)
-            {
-                Console.WriteLine("   time =  " + week + " w : " + day + " d :  0" + hour + " h :  0" + min + " m :  0" + sec + " s" );
-            }
-            Console.WriteLine("Press ENTER to continue ! ");
-            if(Console.ReadKey().Key == ConsoleKey.Enter)
-            {
-
+            year = time / 31104000;
+            month = (time % 31104000) / 2592000;
+            week = ((time % 31104000) % 2592000) / 604800;
+            day = ((time % 31104000) % 2592000) % 604800 / 86400;
+            hour = (((time % 31104000) % 2592000) % 604800 % 86400) / 3600;
+            min = ((((time % 31104000) % 2592000) % 604800 % 86400) % 3600) / 60;
+            sec = ((((time % 31104000) % 2592000) % 604800 % 86400) % 3600) % 60;
+            
+            Console.ForegroundColor = ConsoleColor.Green;
+            AddZeros();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("   Press any key to continue! ");
+            Console.ReadKey();
             Console.Clear();
             goto A;
-
-            }
 
 
         }
